@@ -4,18 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+public class Category extends ECommerceObject {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Category> childCategoryList;
 

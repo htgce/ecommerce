@@ -1,23 +1,35 @@
 package com.trendyol.ecommerce.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.sun.istack.NotNull;
+import com.trendyol.ecommerce.model.dto.UserDto;
+import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class User extends ECommerceObject {
+    @Column(name = "FIRSTNAME")
     private String firstName;
+
+    @Column(name = "LASTNAME")
     private String lastName;
+
+    @Column(unique = true)
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String password;
+
+    public User(UserDto userDto) {
+        setId(userDto.getId());
+        setFirstName(userDto.getFirstName());
+        setLastName(userDto.getLastName());
+    }
 }
