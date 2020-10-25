@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS PRODUCT
+(
+    ID          Long NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    DESCRIPTION varchar(50),
+    BRANDNAME   varchar(50),
+    SIZE        varchar(8),
+    AGE         varchar(8),
+    PRICE       decimal,
+    CATEGORY    LONG,
+    FOREIGN KEY (CATEGORY) REFERENCES Category (ID)
+);
+
+INSERT INTO PRODUCT (DESCRIPTION, BRANDNAME, SIZE, AGE, PRICE, CATEGORY)
+VALUES ('JEAN', 'MAVI', 'L', '0', 50, 1);

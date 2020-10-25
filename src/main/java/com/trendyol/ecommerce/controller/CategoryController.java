@@ -1,7 +1,7 @@
 package com.trendyol.ecommerce.controller;
 
-import com.trendyol.ecommerce.model.dto.UserDto;
-import com.trendyol.ecommerce.services.UserService;
+import com.trendyol.ecommerce.model.dto.CategoryDto;
+import com.trendyol.ecommerce.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
-
+@RequestMapping("/categories")
+public class CategoryController {
     @Autowired
-    UserService userService;
+    CategoryService categoryService;
 
     @GetMapping("")
-    public List<UserDto> getAllUsers() {
-        return userService.getUserList();
+    public List<CategoryDto> getAllCategories() {
+        return categoryService.getCategoryList();
     }
 }

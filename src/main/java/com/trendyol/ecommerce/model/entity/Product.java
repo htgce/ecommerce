@@ -2,7 +2,9 @@ package com.trendyol.ecommerce.model.entity;
 
 import com.trendyol.ecommerce.model.dto.ProductDto;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,8 @@ import java.math.BigDecimal;
 
 
 @Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product extends ECommerceObject {
@@ -19,7 +23,7 @@ public class Product extends ECommerceObject {
     @Column
     private String description;
 
-    @Column
+    @Column(name = "BRANDNAME")
     private String brandName;
 
     @Column
@@ -40,6 +44,13 @@ public class Product extends ECommerceObject {
     private List<Image> commentList;*/
 
     public Product(ProductDto productDto) {
-
+        setId(productDto.getId());
+        setAge(productDto.getAge());
+        setBrandName(productDto.getBrandName());
+        if (productDto.getCategoryDto() != null)
+            setCategory(new Category(productDto.getCategoryDto()));
+        setDescription(productDto.getDescription());
+        setPrice(productDto.getPrice());
+        setSize(productDto.getSize());
     }
 }
