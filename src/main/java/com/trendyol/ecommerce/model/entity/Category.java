@@ -21,7 +21,7 @@ public class Category extends ECommerceObject {
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     private List<Product> productList;
 
     public Category(CategoryDto categoryDto) {
