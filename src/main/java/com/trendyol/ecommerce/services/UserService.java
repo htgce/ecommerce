@@ -22,7 +22,7 @@ public class UserService {
         return userRepository.findAll().stream().map(UserDto::new).collect(Collectors.toList());
     }
 
-    public void addUser(UserDto userDto) {
-        User save = userRepository.save(new User(userDto));
+    public UserDto addUser(UserDto userDto) {
+        return new UserDto(userRepository.save(new User(userDto)));
     }
 }

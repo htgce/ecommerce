@@ -24,8 +24,9 @@ public class CategoryService {
         return categoryRepository.findAll().stream().map(CategoryDto::new).collect(Collectors.toList());
     }
 
-    public void addCategory(CategoryDto categoryDto) {
+    public CategoryDto addCategory(CategoryDto categoryDto) {
         Category savedCategory = categoryRepository.save(new Category(categoryDto));
+        return new CategoryDto(savedCategory);
     }
 
     public List<ProductDto> getProductList(Long categoryId) {

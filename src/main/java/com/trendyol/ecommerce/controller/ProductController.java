@@ -20,12 +20,17 @@ public class ProductController {
     @GetMapping("")
     @Operation(description = "Retrieve products")
     public ResponseEntity<List<ProductDto>> getAllProducts() {
-        return new ResponseEntity<List<ProductDto>>(productService.getAllProducts(), HttpStatus.OK);
+        List<ProductDto> productList = productService.getAllProducts();
+        if (productList != null && !productList.isEmpty()) {
+            return new ResponseEntity<>(productList, HttpStatus.OK);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
     @PostMapping("")
     @Operation(description = "Save product")
     public ResponseEntity<ProductDto> saveProduct(@Valid @RequestBody ProductDto productDto) {
-        return new ResponseEntity<ProductDto>(productService.addNewProduct(productDto), HttpStatus.OK);
+        return new ResponseEntity<>(productService.addNewProduct(productDto), HttpStatus.OK);
     }
 }
